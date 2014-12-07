@@ -8,7 +8,7 @@ Group:		System/Fonts/True type
 Source0:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 #Source1:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.ttf
 
-BuildRequires:	pkgconfig(fontutil)
+#BuildRequires:	pkgconfig(fontutil)
 BuildRequires:	fontforge
 BuildRequires:	fontpackages-devel
 BuildRequires:	fontconfig
