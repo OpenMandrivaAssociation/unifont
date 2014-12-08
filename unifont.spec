@@ -8,7 +8,7 @@ Group:		System/Fonts/True type
 Source0:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 #Source1:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.ttf
 
-#BuildRequires:	pkgconfig(fontutil)
+BuildRequires:	pkgconfig(fontutil)
 BuildRequires:	fontforge
 BuildRequires:	fontpackages-devel
 BuildRequires:	fontconfig
@@ -23,7 +23,7 @@ modify the font. This package contains tools and glyph descriptions.
 BuildArch:	noarch
 Summary:	Unicode font with a glyph for every visible BMP code point
 Requires:	fontpackages-filesystem
-Requires:	perl-Wx
+Requires:	perl-Wx-Perl-Dialog
 
 %description	fonts
 Unifont is a fixed-width Unicode font with a glyph for every visible
