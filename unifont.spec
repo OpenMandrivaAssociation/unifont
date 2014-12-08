@@ -23,6 +23,7 @@ modify the font. This package contains tools and glyph descriptions.
 BuildArch:	noarch
 Summary:	Unicode font with a glyph for every visible BMP code point
 Requires:	fontpackages-filesystem
+Requires:	perl-Wx
 
 %description	fonts
 Unifont is a fixed-width Unicode font with a glyph for every visible
