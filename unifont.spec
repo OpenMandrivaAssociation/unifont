@@ -11,8 +11,8 @@ Source0:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.ta
 BuildRequires:	pkgconfig(fontutil)
 BuildRequires:	fontforge
 BuildRequires:	fontpackages-devel
-BuildRequires:	fontconfig
-BuildRequires:	freetype-tools
+#BuildRequires:	fontconfig
+#BuildRequires:	freetype-tools
 
 %description
 Unifont is a Unicode font with a glyph for every visible Unicode Basic
@@ -23,7 +23,7 @@ modify the font. This package contains tools and glyph descriptions.
 BuildArch:	noarch
 Summary:	Unicode font with a glyph for every visible BMP code point
 Requires:	fontpackages-filesystem
-Requires:	perl-Wx-Perl-Dialog
+#Requires:	perl-Wx-Perl-Dialog
 
 %description	fonts
 Unifont is a fixed-width Unicode font with a glyph for every visible
