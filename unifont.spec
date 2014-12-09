@@ -11,8 +11,8 @@ Source0:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.ta
 BuildRequires:	pkgconfig(fontutil)
 BuildRequires:	fontforge
 BuildRequires:	fontpackages-devel
-#BuildRequires:	fontconfig
-#BuildRequires:	freetype-tools
+BuildRequires:	fontconfig
+BuildRequires:	freetype-tools
 
 %description
 Unifont is a Unicode font with a glyph for every visible Unicode Basic
