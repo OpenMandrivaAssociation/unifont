@@ -1,6 +1,6 @@
 Name:		unifont
 Version:	7.0.06
-Release:	3
+Release:	2
 License:	GPLv2+ and GFDL
 Url:		https://savannah.gnu.org/projects/unifont
 Summary:	Tools and glyph descriptions in a very simple text format
