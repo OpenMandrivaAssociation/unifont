@@ -1,0 +1,11 @@
+--- unifont-7.0.06/src/Makefile~	2014-10-22 01:44:41.000000000 +0100
++++ unifont-7.0.06/src/Makefile	2014-12-10 10:38:18.857254917 +0000
+@@ -27,7 +27,7 @@
+ #
+ PPROGS = bdfimplode hex2bdf hex2sfd hexbraille hexdraw hexkinya hexmerge \
+ 	 johab2ucs2 unifontchojung unifontksx unihex2png unihexfill \
+-	 unipng2hex unifont-viewer
++	 unipng2hex
+ 
+ PROGS = $(CPROGS) $(PPROGS)
+ 

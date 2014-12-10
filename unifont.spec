@@ -8,6 +8,8 @@ Group:		System/Fonts/True type
 Source0:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 #Source1:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.ttf
 
+Patch1:		dep-problem-remove-unifont-viewer.patch
+
 BuildRequires:	pkgconfig(fontutil)
 BuildRequires:	fontforge
 BuildRequires:	fontpackages-devel
@@ -49,6 +51,7 @@ U+0000..U+FFFF.
 # Disable rebuilding during installation
 sed -i 's/^install: .*/install:/' Makefile
 sed -i 's/install -s/install/' src/Makefile
+%apply_patches
 
 %build
 # Makefile is broken with parallel builds
