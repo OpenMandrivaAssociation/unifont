@@ -13,6 +13,7 @@ BuildRequires:	fontforge
 BuildRequires:	fontpackages-devel
 BuildRequires:	fontconfig
 BuildRequires:	freetype-tools
+%define __noautoreq '(perl\\(Wx::Frame)'
 
 %description
 Unifont is a Unicode font with a glyph for every visible Unicode Basic
@@ -23,7 +24,6 @@ modify the font. This package contains tools and glyph descriptions.
 BuildArch:	noarch
 Summary:	Unicode font with a glyph for every visible BMP code point
 Requires:	fontpackages-filesystem
-#Requires:	perl-Wx-Perl-Dialog
 
 %description	fonts
 Unifont is a fixed-width Unicode font with a glyph for every visible
