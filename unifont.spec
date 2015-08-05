@@ -67,14 +67,13 @@ install -p -m644 doc/unifont.info -D %{buildroot}%{_infodir}/unifont.info
 install -Dm0644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/unifont.metainfo.xml
 
 mkdir -p %{buildroot}%{_datadir}/fonts/TTF/%{name}
-mv %{buildroot}%{_datadir}/fonts/%{name}/*.ttf %{buildroot}%{_datadir}/fonts/TTF/%{name}/
-ttmkfdir %{buildroot}/%{_datadir}/fonts/TTF/%{name} > %{buildroot}%{_datadir}/fonts/TTF/%{name}/fonts.dir
+mv %{buildroot}%{_fontdir}/%{name}/*.ttf %{buildroot}%{_datadir}/fonts/TTF/%{name}/
+ttmkfdir %{buildroot}/%{_datadir}/fonts/TTF/%{name}  > %{buildroot}%{_datadir}/fonts/TTF/%{name}/fonts.dir
 ln -s fonts.dir %{buildroot}%{_datadir}/fonts/TTF/%{name}/fonts.scale
 
 mkdir -p %{buildroot}%{_sysconfdir}/X11/fontpath.d/
 ln -s ../../..%{_datadir}/fonts/TTF/%{name} \
 	%{buildroot}%{_sysconfdir}/X11/fontpath.d/ttf-%{name}:pri=50
-
 
 %files
 %doc NEWS README COPYING
