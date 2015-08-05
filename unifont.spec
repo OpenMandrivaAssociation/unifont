@@ -6,8 +6,7 @@ Url:		https://savannah.gnu.org/projects/unifont
 Summary:	Tools and glyph descriptions in a very simple text format
 Group:		System/Fonts/True type
 Source0:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
-#Source1:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.ttf
-
+Source1:	unifont.metainfo.xml
 BuildRequires:	pkgconfig(fontutil)
 BuildRequires:	fontforge
 BuildRequires:	fontpackages-devel
@@ -33,6 +32,13 @@ visible Unicode BMP code points.
 This font strives for very wide coverage rather than beauty, so use it
 only as fallback or for special purposes.
 
+%package	viewer
+Summary:	Graphical viewer for unifont
+BuildArch:	noarch
+
+%description	viewer
+A graphical viewer for unifont.
+
 %package -n fonts-ttf-%{name}
 Summary:	GNU Unifont glyphs
 BuildArch:	noarch
@@ -52,34 +58,41 @@ sed -i 's/install -s/install/' src/Makefile
 %build
 # Makefile is broken with parallel builds
 make CFLAGS='%{optflags}'
-%make -C doc unifont.info
+%make -C doc unifont.info CC=%{__cc}
 
 %install
 %makeinstall_std USRDIR=%{_prefix} COMPRESS=0 TTFDEST='$(DESTDIR)%{_fontdir}/%{name}'
 find %{buildroot}/usr/share/unifont/ -type f \! -name %{name}.hex -delete
 install -p -m644 doc/unifont.info -D %{buildroot}%{_infodir}/unifont.info
+install -Dm0644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/unifont.metainfo.xml
 
 mkdir -p %{buildroot}%{_datadir}/fonts/TTF/%{name}
-mv %{buildroot}%{_fontdir}/%{name}/*.ttf %{buildroot}%{_datadir}/fonts/TTF/%{name}/
-ttmkfdir %{buildroot}/%{_datadir}/fonts/TTF/%{name}  > %{buildroot}%{_datadir}/fonts/TTF/%{name}/fonts.dir
+mv %{buildroot}%{_datadir}/fonts/%{name}/*.ttf %{buildroot}%{_datadir}/fonts/TTF/%{name}/
+ttmkfdir %{buildroot}/%{_datadir}/fonts/TTF/%{name} > %{buildroot}%{_datadir}/fonts/TTF/%{name}/fonts.dir
 ln -s fonts.dir %{buildroot}%{_datadir}/fonts/TTF/%{name}/fonts.scale
 
 mkdir -p %{buildroot}%{_sysconfdir}/X11/fontpath.d/
 ln -s ../../..%{_datadir}/fonts/TTF/%{name} \
-        %{buildroot}%{_sysconfdir}/X11/fontpath.d/ttf-%{name}:pri=50
+	%{buildroot}%{_sysconfdir}/X11/fontpath.d/ttf-%{name}:pri=50
+
 
 %files
+%doc NEWS README COPYING
 %{_bindir}/*
 %{_datadir}/%{name}/
-%doc NEWS README COPYING
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 %{_infodir}/%{name}.info*
+%{_datadir}/appdata/%{name}.metainfo.xml
+%exclude %{_bindir}/unifont-viewer
 
 %files fonts
 %{_datadir}/consolefonts/Unifont-APL8x16.psf.gz
 %dir %{_fontbasedir}/X11/misc
 %{_fontbasedir}/X11/misc/%{name}*.pcf.gz
+
+%files viewer
+%{_bindir}/unifont-viewer
 
 %files -n fonts-ttf-%{name}
 %dir %{_datadir}/fonts/TTF/%{name}
