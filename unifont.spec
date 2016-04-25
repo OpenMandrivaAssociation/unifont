@@ -1,6 +1,6 @@
 Name:		unifont
 Version:	8.0.01
-Release:	2
+Release:	3
 License:	GPLv2+ and GFDL
 Url:		https://savannah.gnu.org/projects/unifont
 Summary:	Tools and glyph descriptions in a very simple text format
@@ -57,7 +57,7 @@ sed -i 's/install -s/install/' src/Makefile
 
 %build
 # Makefile is broken with parallel builds
-make CFLAGS='%{optflags}'
+make CFLAGS='%{optflags}' CC=%{__cc}
 %make -C doc unifont.info CC=%{__cc}
 
 %install
