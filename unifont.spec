@@ -50,7 +50,7 @@ first 65,536 code points of the Unicode space, denoted as
 U+0000..U+FFFF.
 
 %prep
-%setup -q
+%setup -qn %{name}-9.0
 # Disable rebuilding during installation
 sed -i 's/^install: .*/install:/' Makefile
 sed -i 's/install -s/install/' src/Makefile
