@@ -12,6 +12,7 @@ BuildRequires:	fontforge
 BuildRequires:	fontpackages-devel
 BuildRequires:	fontconfig
 BuildRequires:	freetype-tools
+BuildRequires:	texinfo
 
 %description
 Unifont is a Unicode font with a glyph for every visible Unicode Basic
