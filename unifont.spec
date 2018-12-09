@@ -1,6 +1,6 @@
 Name:		unifont
-Version:	11.0.01
-Release:	2
+Version:	11.0.03
+Release:	1
 License:	GPLv2+ and GFDL
 Url:		https://savannah.gnu.org/projects/unifont
 Summary:	Tools and glyph descriptions in a very simple text format
@@ -50,18 +50,18 @@ first 65,536 code points of the Unicode space, denoted as
 U+0000..U+FFFF.
 
 %prep
-%setup -q
+%autosetup -p1
 # Disable rebuilding during installation
 sed -i 's/^install: .*/install:/' Makefile
 sed -i 's/install -s/install/' src/Makefile
 
 %build
 # Makefile is broken with parallel builds
-make CFLAGS='%{optflags}' CC=%{__cc}
-%make -C doc unifont.info CC=%{__cc}
+%make_build -j1 CFLAGS='%{optflags}' CC=%{__cc}
+%make_build -C doc unifont.info CC=%{__cc}
 
 %install
-%makeinstall_std USRDIR=%{_prefix} COMPRESS=0 TTFDEST='$(DESTDIR)%{_fontdir}/%{name}'
+%make_install USRDIR=%{_prefix} COMPRESS=0 TTFDEST='$(DESTDIR)%{_fontdir}/%{name}'
 find %{buildroot}/usr/share/unifont/ -type f \! -name %{name}.hex -delete
 install -p -m644 doc/unifont.info -D %{buildroot}%{_infodir}/unifont.info
 install -Dm0644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/unifont.metainfo.xml
