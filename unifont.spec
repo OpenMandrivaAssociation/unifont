@@ -1,6 +1,6 @@
 Name:		unifont
 Version:	11.0.03
-Release:	1
+Release:	2
 License:	GPLv2+ and GFDL
 Url:		https://savannah.gnu.org/projects/unifont
 Summary:	Tools and glyph descriptions in a very simple text format
@@ -58,11 +58,11 @@ sed -i 's/install -s/install/' src/Makefile
 
 %build
 # Makefile is broken with parallel builds
-%make_build -j1 CFLAGS='%{optflags}' CC=%{__cc}
+%make_build -j1 CFLAGS='%{optflags}' CC=%{__cc} CONSOLEDEST=/lib/kbd/consolefonts
 %make_build -C doc unifont.info CC=%{__cc}
 
 %install
-%make_install USRDIR=%{_prefix} COMPRESS=0 TTFDEST='$(DESTDIR)%{_fontdir}/%{name}'
+%make_install USRDIR=%{_prefix} COMPRESS=0 TTFDEST='$(DESTDIR)%{_fontdir}/%{name}' CONSOLEDEST='$(DESTDIR)/lib/kbd/consolefonts'
 find %{buildroot}/usr/share/unifont/ -type f \! -name %{name}.hex -delete
 install -p -m644 doc/unifont.info -D %{buildroot}%{_infodir}/unifont.info
 install -Dm0644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/unifont.metainfo.xml
@@ -87,7 +87,7 @@ ln -s ../../..%{_datadir}/fonts/TTF/%{name} \
 %exclude %{_bindir}/unifont-viewer
 
 %files fonts
-%{_datadir}/consolefonts/Unifont-APL8x16.psf.gz
+/lib/kbd/consolefonts/Unifont-APL8x16.psf.gz
 %dir %{_fontbasedir}/X11/misc
 %{_fontbasedir}/X11/misc/%{name}*.pcf.gz
 
