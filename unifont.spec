@@ -13,6 +13,7 @@ BuildRequires:	fontpackages-devel
 BuildRequires:	fontconfig
 BuildRequires:	freetype-tools
 BuildRequires:	texinfo
+BuildRequires:	pkgconfig(libbsd)
 
 %description
 Unifont is a Unicode font with a glyph for every visible Unicode Basic
@@ -58,7 +59,7 @@ sed -i 's/install -s/install/' src/Makefile
 
 %build
 # Makefile is broken with parallel builds
-%make_build -j1 CFLAGS='%{optflags}' CC=%{__cc} CONSOLEDEST=/lib/kbd/consolefonts
+%make_build -j1 CFLAGS="%{optflags} -lbsd" CC=%{__cc} LDFLAGS="%{ldflags} -lbsd" CONSOLEDEST=/lib/kbd/consolefonts
 %make_build -C doc unifont.info CC=%{__cc}
 
 %install
