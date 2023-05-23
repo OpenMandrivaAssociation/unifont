@@ -1,12 +1,12 @@
 Name:		unifont
-Version:	14.0.04
-Release:	2
+Version:	15.0.03
+Release:	1
 License:	GPLv2+ and GFDL
 Url:		https://savannah.gnu.org/projects/unifont
 Summary:	Tools and glyph descriptions in a very simple text format
 Group:		System/Fonts/True type
 Source0:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:	unifont.metainfo.xml
+Source1:	https://src.fedoraproject.org/rpms/unifont/raw/rawhide/f/unifont.metainfo.xml
 BuildRequires:	pkgconfig(fontutil)
 BuildRequires:	fontforge
 BuildRequires:	fontpackages-devel
@@ -46,6 +46,16 @@ Summary:	GNU Unifont glyphs
 BuildArch:	noarch
 
 %description -n fonts-ttf-%{name}
+GNU Unifont provides glyphs for every printable code point in the
+Unicode 5.1 Basic Multilingual Plane (BMP).  The BMP occupies the
+first 65,536 code points of the Unicode space, denoted as
+U+0000..U+FFFF.
+
+%package -n fonts-otf-%{name}
+Summary:	GNU Unifont glyphs
+BuildArch:	noarch
+
+%description -n fonts-otf-%{name}
 GNU Unifont provides glyphs for every printable code point in the
 Unicode 5.1 Basic Multilingual Plane (BMP).  The BMP occupies the
 first 65,536 code points of the Unicode space, denoted as
@@ -102,3 +112,6 @@ ln -s ../../..%{_datadir}/fonts/TTF/%{name} \
 %verify(not mtime) %{_datadir}/fonts/TTF/%{name}/fonts.dir
 %{_datadir}/fonts/TTF/%{name}/fonts.scale
 %{_sysconfdir}/X11/fontpath.d/ttf-%{name}:pri=50
+
+%files -n fonts-otf-%{name}
+%{_datadir}/fonts/opentype/unifont

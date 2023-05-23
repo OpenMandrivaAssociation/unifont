@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="font">
+  <id>unifont</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>unifont</name>
+  <summary>Font with a glyphs for the whole Unicode
+  Basic Multilingual Plane</summary>
+  <url type="homepage">http://unifoundry.com/unifont.html</url>
+
+  <description>
+    <p>A fixed-width Unicode font with a glyph for every visible
+    Unicode 7.0 Basic Multilingual Plane code point and more. The
+    latest version of Unifont includes approximately 54,700 glyphs for
+    all the visible Unicode BMP code points.</p>
+
+    <p>This font strives for very wide coverage rather than beauty, so
+    use it only as fallback or for special purposes.</p>
+  </description>
+
+  <updatecontact>zbyszek@in.waw.pl</updatecontact>
+</component>
