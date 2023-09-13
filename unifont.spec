@@ -1,5 +1,5 @@
 Name:		unifont
-Version:	15.0.04
+Version:	15.1.01
 Release:	1
 License:	GPLv2+ and GFDL
 Url:		https://savannah.gnu.org/projects/unifont
@@ -13,7 +13,9 @@ BuildRequires:	fontpackages-devel
 BuildRequires:	fontconfig
 BuildRequires:	freetype-tools
 BuildRequires:	texinfo
+BuildRequires:	bdf2psf
 BuildRequires:	pkgconfig(libbsd)
+BuildRequires:	perl(GD)
 
 %description
 Unifont is a Unicode font with a glyph for every visible Unicode Basic
@@ -70,6 +72,8 @@ sed -i 's/install -s/install/' src/Makefile
 %build
 # Makefile is broken with parallel builds
 %make_build -j1 CFLAGS="%{optflags} -lbsd" CC=%{__cc} LDFLAGS="%{build_ldflags} -lbsd" CONSOLEDEST=%{_prefix}/lib/kbd/consolefonts
+%make_build -j1 CFLAGS="%{optflags} -lbsd" CC=%{__cc} LDFLAGS="%{build_ldflags} -lbsd" CONSOLEDEST=%{_prefix}/lib/kbd/consolefonts -C font
+%make_build -j1 CFLAGS="%{optflags} -lbsd" CC=%{__cc} LDFLAGS="%{build_ldflags} -lbsd" CONSOLEDEST=%{_prefix}/lib/kbd/consolefonts -C font truetype
 %make_build -C doc unifont.info CC=%{__cc}
 
 %install
@@ -80,7 +84,7 @@ install -p -m644 doc/unifont.info -D %{buildroot}%{_infodir}/unifont.info
 install -Dm0644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/unifont.metainfo.xml
 
 mkdir -p %{buildroot}%{_datadir}/fonts/TTF/%{name}
-mv %{buildroot}%{_fontdir}/%{name}/*.ttf %{buildroot}%{_datadir}/fonts/TTF/%{name}/
+mv font/compiled/*.ttf %{buildroot}%{_datadir}/fonts/TTF/%{name}/
 ttmkfdir %{buildroot}/%{_datadir}/fonts/TTF/%{name}  > %{buildroot}%{_datadir}/fonts/TTF/%{name}/fonts.dir
 ln -s fonts.dir %{buildroot}%{_datadir}/fonts/TTF/%{name}/fonts.scale
 
