@@ -1,5 +1,5 @@
 Name:		unifont
-Version:	15.1.02
+Version:	15.1.04
 Release:	1
 License:	GPLv2+ and GFDL
 Url:		https://savannah.gnu.org/projects/unifont
@@ -23,12 +23,12 @@ Unifont is a Unicode font with a glyph for every visible Unicode Basic
 Multilingual Plane code point and more, with supporting utilities to
 modify the font. This package contains tools and glyph descriptions.
 
-%package	fonts
+%package fonts
 BuildArch:	noarch
 Summary:	Unicode font with a glyph for every visible BMP code point
 Requires:	fontpackages-filesystem
 
-%description	fonts
+%description fonts
 Unifont is a fixed-width Unicode font with a glyph for every visible
 Unicode Basic Multilingual Plane code point and more. The latest
 version of Unifont includes approximately 54,700 glyphs for all the
@@ -37,11 +37,11 @@ visible Unicode BMP code points.
 This font strives for very wide coverage rather than beauty, so use it
 only as fallback or for special purposes.
 
-%package	viewer
+%package viewer
 Summary:	Graphical viewer for unifont
 BuildArch:	noarch
 
-%description	viewer
+%description viewer
 A graphical viewer for unifont.
 
 %package -n fonts-ttf-%{name}
