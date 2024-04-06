@@ -1,5 +1,5 @@
 Name:		unifont
-Version:	15.1.04
+Version:	15.1.05
 Release:	1
 License:	GPLv2+ and GFDL
 Url:		https://savannah.gnu.org/projects/unifont
@@ -72,13 +72,13 @@ sed -i 's/install -s/install/' src/Makefile
 
 %build
 # Makefile is broken with parallel builds
-%make_build -j1 CFLAGS="%{optflags} -lbsd" CC=%{__cc} LDFLAGS="%{build_ldflags} -lbsd" CONSOLEDEST=%{_prefix}/lib/kbd/consolefonts
-%make_build -j1 CFLAGS="%{optflags} -lbsd" CC=%{__cc} LDFLAGS="%{build_ldflags} -lbsd" CONSOLEDEST=%{_prefix}/lib/kbd/consolefonts -C font
-%make_build -j1 CFLAGS="%{optflags} -lbsd" CC=%{__cc} LDFLAGS="%{build_ldflags} -lbsd" CONSOLEDEST=%{_prefix}/lib/kbd/consolefonts -C font truetype
+%make_build -j1 CFLAGS="%{optflags} -lbsd" CC=%{__cc} LDFLAGS="%{build_ldflags} -lbsd" CONSOLEDEST=%{_datadir}/consolefonts
+%make_build -j1 CFLAGS="%{optflags} -lbsd" CC=%{__cc} LDFLAGS="%{build_ldflags} -lbsd" CONSOLEDEST=%{_datadir}/consolefonts -C font
+%make_build -j1 CFLAGS="%{optflags} -lbsd" CC=%{__cc} LDFLAGS="%{build_ldflags} -lbsd" CONSOLEDEST=%{_datadir}/consolefonts -C font truetype
 %make_build -C doc unifont.info CC=%{__cc}
 
 %install
-%make_install USRDIR=%{_prefix} COMPRESS=0 TTFDEST='$(DESTDIR)%{_fontdir}/%{name}' CONSOLEDEST='$(DESTDIR)/%{_prefix}/lib/kbd/consolefonts'
+%make_install USRDIR=%{_prefix} COMPRESS=0 TTFDEST='$(DESTDIR)%{_fontdir}/%{name}' CONSOLEDEST='$(DESTDIR)/%{_datadir}/consolefonts'
 
 find %{buildroot}/usr/share/unifont/ -type f \! -name %{name}.hex -delete
 install -p -m644 doc/unifont.info -D %{buildroot}%{_infodir}/unifont.info
@@ -104,7 +104,7 @@ ln -s ../../..%{_datadir}/fonts/TTF/%{name} \
 %exclude %{_bindir}/unifont-viewer
 
 %files fonts
-%{_prefix}/lib/kbd/consolefonts/Unifont-APL8x16.psf.gz
+%{_datadir}/consolefonts/Unifont-APL8x16.psf.gz
 %dir %{_fontbasedir}/X11/misc
 %{_fontbasedir}/X11/misc/%{name}*.pcf.gz
 
