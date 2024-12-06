@@ -1,5 +1,5 @@
 Name:		unifont
-Version:	15.1.05
+Version:	16.0.02
 Release:	1
 License:	GPLv2+ and GFDL
 Url:		https://savannah.gnu.org/projects/unifont
