@@ -17,6 +17,7 @@ BuildRequires:	bdf2psf
 BuildRequires:	pkgconfig(libbsd)
 BuildRequires:	perl(GD)
 BuildRequires:	locales-extra-charsets
+BuildRequires:	imagemagick
 
 %description
 Unifont is a Unicode font with a glyph for every visible Unicode Basic
