@@ -1,5 +1,5 @@
 Name:		unifont
-Version:	16.0.03
+Version:	17.0.01
 Release:	1
 License:	GPLv2+ and GFDL
 Url:		https://savannah.gnu.org/projects/unifont
@@ -100,7 +100,7 @@ ln -s ../../..%{_datadir}/fonts/TTF/%{name} \
 %{_datadir}/%{name}/
 %doc %{_mandir}/man1/*
 %doc %{_mandir}/man5/*
-%doc %{_infodir}/%{name}.info*
+%doc %{_infodir}/*.*
 %{_datadir}/appdata/%{name}.metainfo.xml
 %exclude %{_bindir}/unifont-viewer
 
