@@ -7,6 +7,7 @@ Summary:	Tools and glyph descriptions in a very simple text format
 Group:		System/Fonts/True type
 Source0:	http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:	https://src.fedoraproject.org/rpms/unifont/raw/rawhide/f/unifont.metainfo.xml
+BuildRequires:	make
 BuildRequires:	pkgconfig(fontutil)
 BuildRequires:	fontforge
 BuildRequires:	fontpackages-devel
