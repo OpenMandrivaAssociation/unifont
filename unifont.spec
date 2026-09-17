@@ -71,6 +71,9 @@ U+0000..U+FFFF.
 # Disable rebuilding during installation
 sed -i 's/^install: .*/install:/' Makefile
 sed -i 's/install -s/install/' src/Makefile
+# 18.0.01: font/ttfsrc sbit already rm -f's the copied BDF; the parent
+# Makefile then rm's it again without -f and fails the build.
+sed -i 's|^rm $(TTFSRC)/|rm -f $(TTFSRC)/|; s|^rm $(OTFSRC)/|rm -f $(OTFSRC)/|' font/Makefile
 
 %build
 # Makefile is broken with parallel builds
