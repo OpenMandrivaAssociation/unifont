@@ -42,6 +42,11 @@ only as fallback or for special purposes.
 %package viewer
 Summary:	Graphical viewer for unifont
 BuildArch:	noarch
+# perl(Wx) is not available on all cooker arches; extra tests install
+# every built RPM, so do not hard-require it.
+AutoReq:	no
+Requires:	perl
+Recommends:	perl(Wx)
 
 %description viewer
 A graphical viewer for unifont.
